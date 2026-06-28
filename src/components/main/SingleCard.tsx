@@ -1,5 +1,4 @@
 import { Droplets, Eye, Thermometer, Wind } from "lucide-react";
-import type React from "react";
 import type { WeatherData } from "@/types/types";
 import { Card, CardContent, CardTitle } from "../ui/card";
 import GetWeatherIcon from "../WeatherIcon";

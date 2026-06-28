@@ -49,7 +49,9 @@ function SearchBar() {
 
 			const filtered = [
 				...new Set(
-					fuse.search(value).map((item) => item.item)
+					fuse
+						.search(value)
+						.map((item) => item.item)
 						.map((filteredName) => {
 							return coordinates.find(
 								(item) => item.country === filteredName.country,
@@ -60,7 +62,7 @@ function SearchBar() {
 			];
 			setResult(filtered);
 		}, 1000);
-		return () => clearTimeout(timeout)
+		return () => clearTimeout(timeout);
 	}
 
 	return (

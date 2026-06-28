@@ -1,4 +1,3 @@
-import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { Button } from "../ui/button";
 
