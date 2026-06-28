@@ -1,21 +1,46 @@
-import { Button } from "@/components/ui/button"
+import React from "react";
+// import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
+import Main from "./components/main/Main";
+import getData, { getCurrentLocation } from "./hooks/useData";
+import "react-loading-skeleton/dist/skeleton.css";
+import { SkeletonTheme } from "react-loading-skeleton";
+import OtherCitites from "./components/footer/OtherCitites";
+import Data from "./context/AppContext";
 
-export function App() {
-  return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
-    </div>
-  )
+function App() {
+	const { setWeatherData, setAppState } = Data();
+	React.useEffect(() => {
+		async function getLocation() {
+			const data = await getCurrentLocation();
+			getData(
+				setAppState,
+				setWeatherData,
+				{ lat: data.lat, long: data.long },
+				{ country: data.country, city: data.city },
+			);
+			setAppState((prev) => {
+				return {
+					...prev,
+					currentLocation: {
+						lat: Math.round(data.lat),
+						long: Math.round(data.long),
+					},
+					location: { country: data.country, city: data.city },
+				};
+			});
+		}
+		getLocation();
+	}, [setAppState, setWeatherData]);
+	return (
+		<SkeletonTheme baseColor="#202020" highlightColor="#444">
+			<main>
+				<Header />
+				<Main />
+				<OtherCitites />
+			</main>
+		</SkeletonTheme>
+	);
 }
 
-export default App
+export default App;

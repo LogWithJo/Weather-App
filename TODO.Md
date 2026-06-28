@@ -1,0 +1,27 @@
+- ## [x] Test Api
+- ## [x] Create UI
+- [x] Core Colors
+- [x] Fonts
+- [x] Spacing
+- ## [x] Design Logic
+- [x] UnderStand the Problem
+- [x] Break the System into Modules
+- [x] Define Data Flow
+- [x] Define Data Structure
+- [x] Write Pseudo Code
+- [x] Design State Structure
+- [x] Define Edge Cases
+- ## [x] Code UI
+- ## [x] Code Logic
+- [x] Header
+- [x] Main
+- [x] Other Cities
+- [x] loading the page until gets api
+- [x] other cities
+- [x] show info in info card
+- [x] enhance UI
+- [x] fix search error
+- [x] enhance logic
+- [x] enhance function and variables names
+- [x] return to the location button
+- [x] icon page
