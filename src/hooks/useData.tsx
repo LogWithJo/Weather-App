@@ -33,8 +33,8 @@ export async function getCurrentLocation(): Promise<{
 			city: data.address.city,
 		};
 	} catch (error) {
-		console.log(`error`, { cause: error });
-		return { lat: 30, long: 31, country: "Egypt", city: "Cairo" };
+		throw new Error(`error`, { cause: error });
+		// return { lat: 30, long: 31, country: "Egypt", city: "Cairo" };
 	}
 }
 
@@ -62,25 +62,25 @@ export async function searchLocation(
 
 		return newData;
 	} catch (error) {
-		console.log("error", { cause: error });
-		return [
-			{
-				lat: 30,
-				long: 31,
-				country: "Egypt",
-				city: "Cairo",
-			},
-		];
+		throw new Error("error", { cause: error });
+		// return [
+		// 	{
+		// 		lat: 30,
+		// 		long: 31,
+		// 		country: "Egypt",
+		// 		city: "Cairo",
+		// 	},
+		// ];
 	}
 }
 
 export async function fetchData(
 	position: { lat: number; long: number } = { lat: 30, long: 31 },
 	address: { country: string; city: string }
-	= {
-		country: "Egypt",
-		city: "Cairo",
-	},
+	// = {
+	// 	country: "Egypt",
+	// 	city: "Cairo",
+	// },
 ) {
 	try {
 		const params = {
