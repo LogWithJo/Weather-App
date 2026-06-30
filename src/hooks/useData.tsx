@@ -12,7 +12,7 @@ export async function getCurrentLocation(): Promise<{
 	long: number;
 	country: string;
 	city: string;
-}> {
+	}> {
 	try {
 		const getLocation = () =>
 			new Promise<GeolocationPosition>((resolve, reject) => {
@@ -33,8 +33,8 @@ export async function getCurrentLocation(): Promise<{
 			city: data.address.city,
 		};
 	} catch (error) {
-		console.error(`error`, { cause: error });
-		return { lat: 30, long: 31, country: "Egypt", city: "Cairo" };
+		throw new Error(`error`, { cause: error });
+		// return { lat: 30, long: 31, country: "Egypt", city: "Cairo" };
 	}
 }
 
@@ -182,6 +182,7 @@ export default async function getData(
 		top: 0,
 		behavior: "smooth",
 	});
+
 	const data = await fetchData(coordinates, location);
 
 	setAppState((prev) => ({
