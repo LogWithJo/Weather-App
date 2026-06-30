@@ -33,7 +33,7 @@ export async function getCurrentLocation(): Promise<{
 			city: data.address.city,
 		};
 	} catch (error) {
-		throw new Error(`error`, { cause: error });
+		console.log(`error`, { cause: error });
 		return { lat: 30, long: 31, country: "Egypt", city: "Cairo" };
 	}
 }
@@ -62,7 +62,7 @@ export async function searchLocation(
 
 		return newData;
 	} catch (error) {
-		throw new Error("error", { cause: error });
+		console.log("error", { cause: error });
 		return [
 			{
 				lat: 30,
